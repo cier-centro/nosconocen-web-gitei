@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,25 +16,27 @@ public class ShowInfoProject : MonoBehaviour {
     private float time;
     private bool hideTit = true;
     private bool hideDesc = true;
+    private float positionTextY;
 
     // Use this for initialization
     void Start () {
         cargarArchivo();
+        positionTextY = textTitle.transform.parent.transform.position.y;
 	}
-	
+
 	// Update is called once per frame
 
 	void FixedUpdate () {
-        
-        
+
+
         if (hideTit)
         {
-			float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.x, Screen.width * 2f, Time.deltaTime*2*speed(Screen.width));
-            textTitle.transform.parent.transform.position = new Vector3(temp, textTitle.transform.parent.transform.position.y, 0);
+            float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y,positionTextY, Time.deltaTime*3*speed(Screen.height));
+            textTitle.transform.parent.transform.position = new Vector3( textTitle.transform.parent.transform.position.x,temp, 0);
         }
         else {
-			float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.x, Screen.width, Time.deltaTime*speed(Screen.width));
-            textTitle.transform.parent.transform.position = new Vector3(temp, textTitle.transform.parent.transform.position.y, 0);
+            float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y, positionTextY-Screen.height/2, Time.deltaTime*speed(Screen.height));
+            textTitle.transform.parent.transform.position = new Vector3( textTitle.transform.parent.transform.position.x, temp, 0);
         }
 		if (writeDescription){
 			time = Time.deltaTime;
@@ -116,13 +118,13 @@ public class ShowInfoProject : MonoBehaviour {
 		Invoke ("showTitle", 1.5f);
     }
 
-	private float speed(float destiny){
-		float auxiliar = textDescription.transform.parent.transform.parent.transform.position.x - destiny;
+	private float speed(float destinx){
+        float auxiliar = textDescription.transform.parent.transform.parent.transform.position.y + destinx;
 		auxiliar = Mathf.Abs (auxiliar);
-		if (auxiliar<Screen.width/4) {
+        if (auxiliar<Screen.height*(3/4)) {
 			return 4;
 		}
-		if (auxiliar<Screen.width/3) {
+        if (auxiliar<Screen.height*(2/3)) {
 			return 2;
 		}
 		return 1;
