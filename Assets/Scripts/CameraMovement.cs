@@ -81,6 +81,7 @@ public class CameraMovement : MonoBehaviour {
 			pC = 1;
 		}
         GetComponent<ShowInfoProject>().loadName(pC);
+        GetComponent<StreamVideo>().loadVideo(pC);
     }
 
 	public void secondaryTouch(){
@@ -91,6 +92,7 @@ public class CameraMovement : MonoBehaviour {
 			pC = 4;
 		}
 		GetComponent<ShowInfoProject>().loadName(pC);
+        GetComponent<StreamVideo>().loadVideo(pC);
 	}
 
 

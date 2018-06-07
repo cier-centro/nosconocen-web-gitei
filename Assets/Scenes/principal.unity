@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35498375, g: 0.5761347, b: 0.8684344, a: 1}
+  m_IndirectSpecularColor: {r: 0.3529447, g: 0.5736865, b: 0.868659, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11162,8 +11162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 317.31317, y: 0}
-  m_SizeDelta: {x: 594.62634, y: 0}
+  m_AnchoredPosition: {x: 317.2249, y: 0}
+  m_SizeDelta: {x: 594.4498, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &233386428
 MonoBehaviour:
@@ -50465,10 +50465,10 @@ RectTransform:
   m_Father: {fileID: 1556765919}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 372.8, y: 211.9}
-  m_SizeDelta: {x: 43.1, y: 39.2}
+  m_SizeDelta: {x: -916.9, y: -560.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057133156
 MonoBehaviour:
@@ -74502,8 +74502,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 313.28815, y: 0}
-  m_SizeDelta: {x: 606.5763, y: 0}
+  m_AnchoredPosition: {x: 313.19992, y: 0}
+  m_SizeDelta: {x: 606.39984, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1614483040
 MonoBehaviour:
@@ -84134,6 +84134,7 @@ GameObject:
   - component: {fileID: 1800618023}
   - component: {fileID: 781899660}
   - component: {fileID: 781899659}
+  - component: {fileID: 1800618029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -84243,6 +84244,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 270, z: 0}
+--- !u!114 &1800618029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1800618021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6a3b953ccf54675ab8b438a8a5efe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rawImage: {fileID: 414193413}
+  videoPlayer: {fileID: 225497135}
+  audioSource: {fileID: 225497137}
+  canvas: {fileID: 1556765922}
+  textVideo: {fileID: 2031058221}
+  positionVideoY: 0
 --- !u!1 &1802324720
 GameObject:
   m_ObjectHideFlags: 0
