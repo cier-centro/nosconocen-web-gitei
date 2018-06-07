@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 
 public class ShowInfoProject : MonoBehaviour {
 
 
     public Text textTitle;
+    public Text textTitle2;
     public Text textDescription;
     private List<string[]> projects = new List<string[]>();
 	private bool writeDescription = false;
@@ -17,11 +19,13 @@ public class ShowInfoProject : MonoBehaviour {
     private bool hideTit = true;
     private bool hideDesc = true;
     private float positionTextY;
+    private float positionTextY2;
 
     // Use this for initialization
     void Start () {
         cargarArchivo();
         positionTextY = textTitle.transform.parent.transform.position.y;
+        positionTextY2 = textTitle2.transform.parent.transform.position.y;
 	}
 
 	// Update is called once per frame
@@ -33,10 +37,16 @@ public class ShowInfoProject : MonoBehaviour {
         {
             float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y,positionTextY, Time.deltaTime*3*speed(Screen.height));
             textTitle.transform.parent.transform.position = new Vector3( textTitle.transform.parent.transform.position.x,temp, 0);
+
+            float temp2 = Mathf.Lerp(textTitle2.transform.parent.transform.position.y, positionTextY2, Time.deltaTime * 3 * speed(Screen.height));
+            textTitle2.transform.parent.transform.position = new Vector3(textTitle2.transform.parent.transform.position.x, temp, 0);
         }
         else {
             float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y, positionTextY-Screen.height/2, Time.deltaTime*speed(Screen.height));
             textTitle.transform.parent.transform.position = new Vector3( textTitle.transform.parent.transform.position.x, temp, 0);
+
+            float temp2 = Mathf.Lerp(textTitle2.transform.parent.transform.position.y, positionTextY2 - Screen.height / 2, Time.deltaTime * speed(Screen.height));
+            textTitle2.transform.parent.transform.position = new Vector3(textTitle2.transform.parent.transform.position.x, temp, 0);
         }
 		if (writeDescription){
 			time = Time.deltaTime;
@@ -131,7 +141,9 @@ public class ShowInfoProject : MonoBehaviour {
 	}
 
 	private void showTitle(){
-		textTitle.text = textToWrite[0];
+        string title=textToWrite[0].Split(' ')[0];
+        textTitle.text = title;
+        textTitle2.text = Regex.Replace(textToWrite[0],title+" ","") ;
 		hideTit = false;
 	}
 
