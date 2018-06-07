@@ -20,12 +20,14 @@ public class ShowInfoProject : MonoBehaviour {
     private bool hideDesc = true;
     private float positionTextY;
     private float positionTextY2;
+    private float positionTextY3;
 
     // Use this for initialization
     void Start () {
         cargarArchivo();
         positionTextY = textTitle.transform.parent.transform.position.y;
         positionTextY2 = textTitle2.transform.parent.transform.position.y;
+        positionTextY3 = textDescription.transform.parent.transform.position.y;
 	}
 
 	// Update is called once per frame
@@ -35,20 +37,28 @@ public class ShowInfoProject : MonoBehaviour {
 
         if (hideTit)
         {
-            float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y,positionTextY, Time.deltaTime*3*speed(Screen.height));
+            float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y,positionTextY, Time.deltaTime*3*speed(Screen.height,1));
             textTitle.transform.parent.transform.position = new Vector3( textTitle.transform.parent.transform.position.x,temp, 0);
 
-            float temp2 = Mathf.Lerp(textTitle2.transform.parent.transform.position.y, positionTextY2, Time.deltaTime * 3 * speed(Screen.height));
-            textTitle2.transform.parent.transform.position = new Vector3(textTitle2.transform.parent.transform.position.x, temp, 0);
+            float temp2 = Mathf.Lerp(textTitle2.transform.parent.transform.position.y, positionTextY2, Time.deltaTime * 3 * speed(Screen.height,1));
+            textTitle2.transform.parent.transform.position = new Vector3(textTitle2.transform.parent.transform.position.x, temp2, 0);
+
+            float temp3 = Mathf.Lerp(textDescription.transform.parent.transform.position.y, positionTextY3, Time.deltaTime * 3 * speed(Screen.height*2,4));
+            textDescription.transform.parent.transform.position = new Vector3(textDescription.transform.parent.transform.position.x, temp3, 0);
+
         }
         else {
-            float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y, positionTextY-Screen.height/2, Time.deltaTime*speed(Screen.height));
+            float temp = Mathf.Lerp(textTitle.transform.parent.transform.position.y, positionTextY-Screen.height*0.6f, Time.deltaTime*speed(Screen.height,1));
             textTitle.transform.parent.transform.position = new Vector3( textTitle.transform.parent.transform.position.x, temp, 0);
 
-            float temp2 = Mathf.Lerp(textTitle2.transform.parent.transform.position.y, positionTextY2 - Screen.height / 2, Time.deltaTime * speed(Screen.height));
-            textTitle2.transform.parent.transform.position = new Vector3(textTitle2.transform.parent.transform.position.x, temp, 0);
+            float temp2 = Mathf.Lerp(textTitle2.transform.parent.transform.position.y, positionTextY2 - Screen.height*0.6f, Time.deltaTime * speed(Screen.height,1));
+            textTitle2.transform.parent.transform.position = new Vector3(textTitle2.transform.parent.transform.position.x, temp2, 0);
+
+            float temp3 = Mathf.Lerp(textDescription.transform.parent.transform.position.y, positionTextY3 - Screen.height*0.7f, Time.deltaTime * speed(Screen.height*2,4));
+            textDescription.transform.parent.transform.position = new Vector3(textDescription.transform.parent.transform.position.x, temp3, 0);
+
         }
-		if (writeDescription){
+		/*if (writeDescription){
 			time = Time.deltaTime;
 			if (time > 0.001f){
 				textDescription.text = textDescription.text + textToWrite[1].ToCharArray()[descriptionTextPosition];
@@ -59,37 +69,10 @@ public class ShowInfoProject : MonoBehaviour {
 				}
 			}
 
-		}
-		descriptionPosition();
+		}*/
+
 	}
 
-    private void descriptionPosition() {
-		//RectTransform rectT = textDescription.transform.parent.gameObject.GetComponent<RectTransform> ();
-		//float distance=Vector2.Distance (new Vector2 (rectT.anchorMin.y*Screen.width, 0), new Vector2 (rectT.anchorMax.y*Screen.width, 0));
-		Vector2 actual =textDescription.transform.parent.transform.parent.gameObject.GetComponent<RectTransform> ().pivot;
-        if (hideDesc)
-        {
-			if (hideTit) {
-				textDescription.transform.parent.transform.parent.gameObject.GetComponent<RectTransform> ().pivot = Vector2.Lerp(actual, new Vector2 (0,1), Time.deltaTime*500000);
-				float temp = Mathf.Lerp (textDescription.transform.parent.transform.parent.transform.position.x, Screen.width*1.3f, Time.deltaTime*speed(Screen.width*900));
-				textDescription.transform.parent.transform.parent.transform.position = new Vector3 (temp, textDescription.transform.parent.transform.parent.transform.position.y, 0);
-			} else {
-				//rectT.pivot = new Vector2 (0, 0);
-				textDescription.transform.parent.transform.parent.gameObject.GetComponent<RectTransform> ().pivot = Vector2.Lerp(actual, new Vector2 (0,1), Time.deltaTime*5000);
-				float temp = Mathf.Lerp (textDescription.transform.parent.transform.parent.transform.position.x, Screen.width, Time.deltaTime*speed(Screen.width));
-				textDescription.transform.parent.transform.parent.transform.position = new Vector3 (temp, textDescription.transform.parent.transform.parent.transform.position.y, 0);
-			}
-        }
-        else
-        {
-			//float distance=Vector2.Distance (rectT.offsetMin*Screen.width,rectT.offsetMax*Screen.width);
-			//rectT.pivot = new Vector2 (1, 0);
-			//print (distance);
-			textDescription.transform.parent.transform.parent.gameObject.GetComponent<RectTransform> ().pivot = Vector2.Lerp(actual, new Vector2 (1, 1), Time.deltaTime*9000);
-			float temp = Mathf.Lerp(textDescription.transform.parent.transform.parent.transform.position.x, Screen.width, Time.deltaTime*speed(Screen.width));
-			textDescription.transform.parent.transform.parent.transform.position = new Vector3(temp, textDescription.transform.parent.transform.parent.transform.position.y, 0);
-        }
-    }
 
     private bool cargarArchivo(){
         try
@@ -124,46 +107,35 @@ public class ShowInfoProject : MonoBehaviour {
 		textDescription.text = ".";
         textToWrite[0] = projects[code][0];
 		textToWrite[1] = projects[code][1];
+        Debug.Log(textToWrite[1]);
         time = 0;
 		Invoke ("showTitle", 1.5f);
+        Invoke("loadDescription", 2.0f);
     }
 
-	private float speed(float destinx){
-        float auxiliar = textDescription.transform.parent.transform.parent.transform.position.y + destinx;
+	private float speed(float destinx,int v){
+        float auxiliar = textTitle.transform.parent.position.y;
+
 		auxiliar = Mathf.Abs (auxiliar);
-        if (auxiliar<Screen.height*(3/4)) {
-			return 4;
+        if (auxiliar<destinx*(3/4)) {
+			return 4*v;
 		}
-        if (auxiliar<Screen.height*(2/3)) {
-			return 2;
+        if (auxiliar<destinx*(2/3)) {
+			return 1*v;
 		}
-		return 1;
+		return 0.5f*v;
 	}
 
 	private void showTitle(){
         string title=textToWrite[0].Split(' ')[0];
-        textTitle.text = title;
-        textTitle2.text = Regex.Replace(textToWrite[0],title+" ","") ;
+        textTitle.text = title.ToUpper();
+        textTitle2.text = Regex.Replace(textToWrite[0],title+" ","").ToUpper() ;
 		hideTit = false;
 	}
 
     public void loadDescription(){
-		//textDescription.transform.parent.transform.parent.gameObject.GetComponent<RectTransform>().pivot=new Vector2 (1f,1f);
-		if (hideDesc) {
-			hideDesc = false;
-			textDescription.text = "";
-			Invoke ("startWriting", 0.5f);
-		} else {
-			hideDesc = true;
-			textDescription.text = ".";
-			textDescription.text = "";
-		}
+        //textDescription.transform.parent.transform.parent.gameObject.GetComponent<RectTransform>().pivot=new Vector2 (1f,1f);
+        textDescription.text = textToWrite[1];
+        hideTit = false;
     }
-
-	private void startWriting(){
-		descriptionTextPosition = 0;
-		time = 0.001f;
-		writeDescription = true;
-	}
-
 }
