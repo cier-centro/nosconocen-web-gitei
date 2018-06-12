@@ -1,12 +1,12 @@
-﻿Clase T|Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio.|
+﻿Clase T|En construcción.|
 Intervención tres escuelas|Tres Escuelas es un proyecto desarrollado por la Universidad Nacional de Colombia en el año 2016 con el propósito de fomentar el uso y la apropiación de la tecnología para la innovación en tres comunidades educativas de Cundinamarca (IE Santa Ana en Soacha, IED Bagazal en Villeta y la Escuela Normal Superior de Ubaté).|
 Aulas sin fronteras|Aulas sin fronteras es un proyecto que busca apoyar docentes de las áreas de matemáticas, lenguaje, ciencias y sociales pertenecientes a 55 instituciones educativas del departamento del Chocó, por medio de una producción de planes educativos completos y detallados para los grados 7°, 8° y 9.|
-Cinemateca| No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original.|
-Policia Nacional|Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.|
-Escuela innovadora|Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.|
+Cinemateca|En construcción.|
+Policia Nacional|En construcción.|
+Escuela innovadora|En construcción.|
 Pares Academicos|Pares académicos es un proyecto para la implementación de estrategias de aprendizaje con el fin de capacitar docentes en diversas áreas del conocimiento, contribuyendo al mejoramiento de la educación superior en Colombia.|
-Dia E|Usa un diccionario de mas de 200 palabras provenientes del latín, combinadas con estructuras muy útiles de sentencias, para generar texto de Lorem Ipsum que parezca razonable.|
-Intervención Girardot|Este Lorem Ipsum generado siempre estará libre de repeticiones, humor agregado o palabras no características del lenguaje, etc.|
-CAV|At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi|
-Taller del estudiante|Propuesta de actividades para los estudiantes durante el Día E.|
-Presentación Día E|Presentación Día E de la Familia|
+Dia E|En construcción.|
+Intervención Girardot|En construcción.|
+CAV|En construcción.|
+Taller del estudiante|En construcción.|
+Presentación Día E|En construcción.|
